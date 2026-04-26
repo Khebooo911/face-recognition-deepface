@@ -3,11 +3,11 @@ from pathlib import Path
 from deepface import DeepFace
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DB_DIR = BASE_DIR / "data" / "database"
+DB_DIR = BASE_DIR / "data" / "database" / "clean_db_processed"
 OUTPUT_PATH = BASE_DIR / "outputs" / "db_embeddings.pkl"
 
 MODEL_NAME = "Facenet512"
-DETECTOR_BACKEND = "retinaface"
+DETECTOR_BACKEND = "opencv"
 
 def get_all_images(root_dir):
     image_paths = []
@@ -26,10 +26,11 @@ def main():
     for img_path in all_images:
         try:
             rep = DeepFace.represent(
-    img_path=str(img_path),
-    model_name="Facenet",
-    enforce_detection=False
-)
+                img_path=str(img_path),
+                model_name=MODEL_NAME,
+                detector_backend=DETECTOR_BACKEND,
+                enforce_detection=False
+            )
 
             embedding = rep[0]["embedding"]
 
@@ -48,6 +49,7 @@ def main():
         pickle.dump(db_embeddings, f)
 
     print(f"[DONE] Saved to {OUTPUT_PATH}")
+
 
 if __name__ == "__main__":
     main()

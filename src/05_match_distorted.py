@@ -3,6 +3,7 @@ import numpy as np
 from deepface import DeepFace
 
 DB_PATH = "../outputs/db_embeddings.pkl"
+THRESHOLD = 0.65  # تقدر تغيّرها لاحقاً
 
 def cosine_similarity(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
@@ -13,7 +14,7 @@ def find_match(query_img_path):
 
     rep = DeepFace.represent(
         img_path=query_img_path,
-        model_name="Facenet",
+        model_name="Facenet512",
         enforce_detection=False
     )
 
@@ -38,5 +39,11 @@ if __name__ == "__main__":
     match, score = find_match(query_img)
 
     print("\n===== RESULT =====")
-    print(f"Best match: {match['identity']}")
-    print(f"Score: {score}")
+
+    if score < THRESHOLD:
+        print("Decision: Unknown person")
+        print(f"Closest match: {match['identity']}")
+        print(f"Score: {score}")
+    else:
+        print(f"Best match: {match['identity']}")
+        print(f"Score: {score}")
