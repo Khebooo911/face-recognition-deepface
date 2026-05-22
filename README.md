@@ -1,5 +1,11 @@
 # AI Face Recognition System using DeepFace
 
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![DeepFace](https://img.shields.io/badge/DeepFace-Facenet512-green)
+![OpenCV](https://img.shields.io/badge/OpenCV-ComputerVision-red)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-AI-orange)
+
+
 ## Overview
 This project is an AI-powered Face Recognition System built using Python, DeepFace, Facenet512, and OpenCV.
 
@@ -85,5 +91,4 @@ python 11_gui_full_pro.py
 Khabbab Mujtaba Abdallah
 
 ## GitHub
-GitHub Repository:
-https://github.com/Khebooo911/face-recognition-deepface
+[View Repository](https://github.com/Khebooo911/face-recognition-deepface)
