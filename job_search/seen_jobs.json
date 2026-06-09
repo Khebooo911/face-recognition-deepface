@@ -1,0 +1,6 @@
+{
+  "_note": "Jobs already shown to the user. Dedup key = Title|Company|PostedDate. Do not show these again.",
+  "seen": [
+    "Analyst, Information Security|Tabby|June 08, 2026"
+  ]
+}
